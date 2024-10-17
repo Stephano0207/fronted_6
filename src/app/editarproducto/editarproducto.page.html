@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-title>Editar Producto</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="cerrarModal()"> close </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">EditarProducto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <form [formGroup]="registrarForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input
+        formControlName="descripcion"
+        [(ngModel)]="datos.descripcion"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select
+        formControlName="idcategoria"
+        [(ngModel)]="datos.idcategoria"
+        placeholder="Selecciona una categoría"
+      >
+        <ion-select-option
+          *ngFor="let categoria of categorias"
+          [value]="categoria.idcategoria"
+        >
+          {{ categoria.descripcion }}
+        </ion-select-option>
+      </ion-select>
+
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input
+        formControlName="precio"
+        [(ngModel)]="datos.precio"
+        type="number"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Cantidad</ion-label>
+      <ion-input
+        formControlName="cantidad"
+        [(ngModel)]="datos.cantidad"
+        type="number"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button
+      [disabled]="!registrarForm.valid"
+      type="submit"
+      expand="block"
+      padding color="primary"
+      class="ion-margin-top"
+      >Actualizar
+    </ion-button
+    >
+  </form>
+</ion-content>

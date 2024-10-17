@@ -8,8 +8,20 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'producto',
     pathMatch: 'full'
+  },
+  {
+    path: 'producto',
+    loadChildren: () => import('./producto/producto.module').then( m => m.ProductoPageModule)
+  },
+  {
+    path: 'agregarproducto',
+    loadChildren: () => import('./agregarproducto/agregarproducto.module').then( m => m.AgregarproductoPageModule)
+  },
+  {
+    path: 'editarproducto/:id',
+    loadChildren: () => import('./editarproducto/editarproducto.module').then( m => m.EditarproductoPageModule)
   },
 ];
 
